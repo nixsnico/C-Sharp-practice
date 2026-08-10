@@ -20,9 +20,10 @@ namespace WindowsFormsApp2
         double value2;
         double result = 0;
         string sign;
+
         List<double> history = new List<double>();
 
-        const string ordnerpfad = @"G:\IT-Softwareentwicklung\JuniorN\Aufgaben\C#\WindowsFormsApp2\XML";
+        const string ordnerpfad = @"C:\Users\JuniorN\source\repos\nj888frfr\wowo-C-\WindowsFormsApp2\XML";
         string dateipfad = Path.Combine(ordnerpfad, "daten.xml");
 
         public Form1()
@@ -52,7 +53,6 @@ namespace WindowsFormsApp2
             label1.Text = textBox1.Text + sign;
             textBox1.Text = "";
 
-            history.Add(value1);
         }
 
         private void button16_Click(object sender, EventArgs e)
