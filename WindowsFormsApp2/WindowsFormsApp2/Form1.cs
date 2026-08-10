@@ -109,6 +109,7 @@ namespace WindowsFormsApp2
                 label1.Text = "";
                 label2.Text = "";
 
+
             }
 
             history.Add(result);
