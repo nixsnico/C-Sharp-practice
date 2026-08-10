@@ -4,3 +4,8 @@ bin/
 obj/
 *.suo
 *.user
+.vs/
+bin/
+obj/
+*.suo
+*.user
