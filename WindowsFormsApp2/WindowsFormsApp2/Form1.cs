@@ -21,7 +21,6 @@ namespace WindowsFormsApp2
         double value2;
         double result = 0;
         string sign;
-        string keyin;
 
         List<string> log = new List<string>();
         List<double> history = new List<double>();
@@ -39,7 +38,7 @@ namespace WindowsFormsApp2
             //Logger.Log("Programm gestartet", dateipfad);
             
             InitializeComponent();
-            TimeStamp();
+            TimeStamp(); // Form1 Konstruktor
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -55,7 +54,7 @@ namespace WindowsFormsApp2
             //{
                 textBox1.Text += button.Text;
             //}
-            TimeStamp(button.Text);
+            TimeStamp(button.Text, button);
 
             //log(button.Text);
 
@@ -170,9 +169,11 @@ namespace WindowsFormsApp2
 
 
             history.Add(result);
+            TimeStamp(meinButtonDerÜbergebenWurde: (Button)sender);
         }
 
-        public static void TimeStamp(string parameterString = null)
+        int x = 0;
+        public void TimeStamp(string parameterString = null, Button meinButtonDerÜbergebenWurde = null)
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
             string folderPath = $@"C:\Users\JuniorN\source\repos\nj888frfr\wowo-C-\WindowsFormsApp2\XML";
@@ -193,14 +194,32 @@ namespace WindowsFormsApp2
             }
             else
             {
+                
+                string logI = "I>";
+                string logD = "D>";
+                string hms = DateTime.Now.ToString("HH:mm:ss");
+                
+                // wenn parameterString NULL ist, dann übergeben wir keine Zahl
+                if (parameterString == null && x == 0)
+                {
+                    x += 1;
+                    File.AppendAllText(path, Environment.NewLine + "Program starting... I>" + Environment.NewLine);
+                }
                 if (Program.Closexe == false)
                 {
-                    parameterString = DateTime.Now + " " + parameterString + Environment.NewLine;
+
+                    parameterString = hms + $" {logD}" + " " + parameterString + Environment.NewLine;
                     File.AppendAllText(path, parameterString);
                 }
                 else if (Program.Closexe == true)
                 {
-                    File.AppendAllText(path, "Program ending...");
+                    File.AppendAllText(path, hms + " Program ending... I>" + Environment.NewLine);
+                }
+
+
+                if (meinButtonDerÜbergebenWurde != null && meinButtonDerÜbergebenWurde.Text == "=")
+                {
+                    File.AppendAllText(path, hms + $"{logI}" + " " + result.ToString() + Environment.NewLine);
                 }
             }
         }

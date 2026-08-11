@@ -10,6 +10,8 @@ namespace WindowsFormsApp2
     internal static class Program
     {
         public static bool Closexe { get; set; } = false;
+        // initialisieren
+        static Form1 form1 = null;
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -19,14 +21,17 @@ namespace WindowsFormsApp2
             Application.ApplicationExit += OnApplicationExit;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            // instanziiere
+            form1 = new Form1();
+            Application.Run(form1);
         }
 
         
         private static void OnApplicationExit(object sender, EventArgs e)
         {
             Closexe = true;
-            Form1.TimeStamp();
+
+            form1.TimeStamp();
         }
     }
 }
