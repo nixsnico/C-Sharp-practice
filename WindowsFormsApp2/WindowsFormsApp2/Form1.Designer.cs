@@ -46,7 +46,7 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.buttonAC = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
@@ -72,7 +72,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 28);
             this.label1.TabIndex = 1;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -82,7 +81,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 28);
             this.label2.TabIndex = 2;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button1
             // 
@@ -264,17 +262,17 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.EventClickNumHandler);
             // 
-            // button16
+            // buttonAC
             // 
-            this.button16.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(14, 583);
-            this.button16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(155, 188);
-            this.button16.TabIndex = 15;
-            this.button16.Text = "AC";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.buttonAC.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAC.Location = new System.Drawing.Point(14, 583);
+            this.buttonAC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonAC.Name = "buttonAC";
+            this.buttonAC.Size = new System.Drawing.Size(155, 188);
+            this.buttonAC.TabIndex = 15;
+            this.buttonAC.Text = "AC";
+            this.buttonAC.UseVisualStyleBackColor = true;
+            this.buttonAC.Click += new System.EventHandler(this.buttonAC_Click);
             // 
             // button19
             // 
@@ -316,7 +314,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 28);
             this.label3.TabIndex = 23;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form1
             // 
@@ -331,7 +328,7 @@
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button15);
-            this.Controls.Add(this.button16);
+            this.Controls.Add(this.buttonAC);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button11);
@@ -379,7 +376,7 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button buttonAC;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
