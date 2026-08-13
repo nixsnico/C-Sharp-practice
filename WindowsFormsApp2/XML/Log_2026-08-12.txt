@@ -1,0 +1,10 @@
+12.08.2026 11:54:29
+11:54:31 D> button 6 pressed
+11:54:32 D> button 8 pressed
+11:54:32 D> button 4 pressed
+11:54:33 D> button 4 pressed
+
+Program starting... I>
+11:54:38 D> button 5 pressed
+11:54:39I> 34220
+11:55:00 Program ending... I>

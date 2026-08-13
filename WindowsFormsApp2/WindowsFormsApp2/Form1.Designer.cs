@@ -51,6 +51,7 @@
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -68,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(453, 18);
+            this.label1.Location = new System.Drawing.Point(410, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 28);
             this.label1.TabIndex = 1;
@@ -294,7 +295,7 @@
             this.button17.TabIndex = 21;
             this.button17.Text = "Save";
             this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click_1);
+            this.button17.Click += new System.EventHandler(this.SaveButton);
             // 
             // button18
             // 
@@ -304,7 +305,7 @@
             this.button18.TabIndex = 22;
             this.button18.Text = "Load";
             this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.button18.Click += new System.EventHandler(this.LoadButton);
             // 
             // label3
             // 
@@ -315,12 +316,21 @@
             this.label3.Size = new System.Drawing.Size(0, 28);
             this.label3.TabIndex = 23;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(504, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 21);
+            this.label4.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(680, 785);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
@@ -381,7 +391,7 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Label label3;
-
+        private System.Windows.Forms.Label label4;
     }
 }
 
