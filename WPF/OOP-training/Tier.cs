@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_training
 {
-    abstract class Tier
+    abstract class Tier //
     {
 
         public Tier(string name)
