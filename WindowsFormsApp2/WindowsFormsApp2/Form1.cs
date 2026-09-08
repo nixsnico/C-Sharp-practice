@@ -136,8 +136,6 @@ namespace WindowsFormsApp2
             label4.Text = sign;
 
 
-            // 1. WICHTIG: Fügt die Einzelziffern der ZWEITEN Zahl zusammen,
-            // bevor wir rechnen und das XML schreiben!
             schlagmmichtot();
 
             if (sign == "+")
@@ -181,13 +179,10 @@ namespace WindowsFormsApp2
                 label4.Text = "";
             }
 
-            // 2. WICHTIG: Den Operator speichern
             calclogsOP.Add(sign);
 
-            // 3. WICHTIG: Das Ergebnis in die History packen, DAMIT die XML-Methode es lesen kann
             history.Add(result);
 
-            // 4. JETZT ERST das XML schreiben, da nun alle Daten (Zahlen, Operator, Ergebnis) bereitstehen
             XMLÜberwachung();
 
             TimeStamp(buttoninputgleich: (Button)sender);
@@ -256,11 +251,11 @@ namespace WindowsFormsApp2
                     writer.WriteStartElement("Calculation");
                     writer.WriteAttributeString("Operator", calclogsOP[i]);
 
-                    // Zu Operator i gehören die Zahlen aus PostConcat (immer im 2er-Paar)
+                    // Zu Operator i gehören die Zahlen aus PostConcat
                     int indexZahl1 = i * 2;
                     int indexZahl2 = (i * 2) + 1;
 
-                    // Erste Zahl schreiben
+                    
                     if (indexZahl1 < PostConcat.Count)
                     {
                         writer.WriteStartElement("Number");
@@ -268,7 +263,7 @@ namespace WindowsFormsApp2
                         writer.WriteEndElement();
                     }
 
-                    // Zweite Zahl schreiben
+                    
                     if (indexZahl2 < PostConcat.Count)
                     {
                         writer.WriteStartElement("Number");
@@ -276,7 +271,7 @@ namespace WindowsFormsApp2
                         writer.WriteEndElement();
                     }
 
-                    // NEU: Das dazugehörige Ergebnis aus der history-Liste schreiben
+                    
                     if (i < history.Count)
                     {
                         writer.WriteStartElement("Result");

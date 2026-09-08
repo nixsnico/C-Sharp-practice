@@ -1,8 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Calculations>
-  <Calculation Operator="-">
-    <Number>53</Number>
-    <Number>8</Number>
-    <Result>45</Result>
-  </Calculation>
-</Calculations>
+<Calculations />

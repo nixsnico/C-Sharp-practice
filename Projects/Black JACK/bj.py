@@ -1,9 +1,15 @@
 import random as rng
+import colorama
+
+colorama.init()
 
 suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 ranks = ['2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace']
 values = {str(i): i for i in range(2, 11)}
 values.update({'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11})
+
+
+
 
 class Deck:
     def __init__(self):
@@ -50,9 +56,13 @@ class Player:
 def play():
     print("=== Welcome to BlackJack ===")
     
+    wallet = 1000;
+    walletmin = 100;
+    
     # Get player count once at the very start
     num_players = int(input("Enter num of players (1-5): "))
     player_list = []
+    print(f"Your balance is {colorama.Fore.GREEN}${wallet}{colorama.Style.RESET_ALL}");
     
     for i in range(num_players):
         player_name = f"Player {i + 1}"
@@ -65,6 +75,16 @@ def play():
         print("\n===============================")
         print("      STARTING A NEW ROUND     ")
         print("===============================")
+
+        while True:
+            betting = int(input("How much would you like to bet?: "))
+            if betting > wallet:
+                print("Balance is too low!")
+                continue
+            break
+
+        wallet -= betting
+        print(f"Your new balance is {colorama.Fore.GREEN}${wallet}{colorama.Style.RESET_ALL}.")
         
         # Fresh deck for the new round
         deck = Deck()
@@ -127,17 +147,30 @@ def play():
         print("\n=== ROUND RESULTS ===")
         for player in player_list:
             if player.folded:
+                
                 print(f"{player.name}: Folded")
             elif player.score > 21:
                 print(f"{player.name}: Busted ({player.score})")
+                if wallet == 0:
+                    wallet += 100  
+                    print(f"Your balance is too low! You have been given $100 to continue playing. Your new balance is {colorama.Fore.RED}${wallet}{colorama.Style.RESET_ALL}.")
+
             elif dealer.score > 21 or player.score > dealer.score:
                 print(f"{player.name}: Wins! ({player.score} vs Dealer's {dealer.score})")
+                betting *=2
+                wallet +=betting
+                print(f"You win ${betting}. Your new balance is {colorama.Fore.GREEN}${wallet}{colorama.Style.RESET_ALL}.")
+
             elif player.score < dealer.score:
                 print(f"{player.name}: Loses ({player.score} vs Dealer's {dealer.score})")
+                if wallet == 0:
+                    wallet += 100
+                    print(f"Your balance is too low! You have been given $100 to continue playing. Your new balance is {colorama.Fore.RED}${wallet}{colorama.Style.RESET_ALL}.")
             else:
                 print(f"{player.name}: Push/Tie ({player.score})")
 
         # NEW: Ask to play again or exit
+        print("Your Current Balance is: ", colorama.Fore.GREEN + f"${wallet}{colorama.Style.RESET_ALL}")
         again = input("\nDo you want to play another round? (Y/N): ").strip().upper()
         if again != 'Y':
             print("\nThanks for playing! Goodbye!")
@@ -145,3 +178,4 @@ def play():
 
 if __name__ == "__main__":
     play()
+
