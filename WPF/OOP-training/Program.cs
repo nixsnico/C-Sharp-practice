@@ -34,6 +34,7 @@ namespace OOP_training
                     {
                         bewegung.Bewegen();
                     }
+
                     if (tier is IFressbar fressbar)
                     {
                         Console.WriteLine("Welches Futter:");
@@ -66,6 +67,23 @@ namespace OOP_training
                 {
                     goto zzz;
                 }
+            }
+
+            if (x == 3)
+            {
+                Lagerbestand<string> lagerNamen = new Lagerbestand<string>();
+                lagerNamen.AddElement("Schraube");
+                lagerNamen.AddElement("Hammer");
+                Console.WriteLine(lagerNamen.ToString());   
+
+                Lagerbestand<Person> lagerPerson = new Lagerbestand<Person>();
+                Console.WriteLine("Input new Person:");
+                string new_person_name = Console.ReadLine();
+                var newP = new Person();
+
+                newP.Introduce(new_person_name, 30);
+                lagerPerson.AddElement(newP);
+                Console.WriteLine(lagerPerson.ToString());
             }
         }
     }

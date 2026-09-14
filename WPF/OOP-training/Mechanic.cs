@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//
+
 namespace OOP_training
 {
     class Motor
@@ -12,7 +12,7 @@ namespace OOP_training
 
         public Motor(string typ)
         {
-            Typ = typ;      // <- das ist im Prinzip schon "this.Typ = typ"
+            Typ = typ;      // <- das ist im Prinzip dasselbe wie "this.Typ = typ"
         }
 
         public void Starten()

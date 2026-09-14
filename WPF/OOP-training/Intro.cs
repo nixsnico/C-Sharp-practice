@@ -4,11 +4,12 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-//
+
 namespace OOP_training
 {
-    class Person
+    public class Person
     {
+
         private int age;
         public string Name { get; set; }
         public int Age
