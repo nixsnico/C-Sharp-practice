@@ -10,25 +10,22 @@ namespace OOP_training
     public class Person
     {
 
-        private int age;
+        
         public string Name { get; set; }
         public int Age
-        { 
-           get { return age; }
-           set 
-           {
+        {
+            get { return age; }
+            set
+            {
                 if (value < 0)
                 {
-                    age = 0;
-                    Console.WriteLine("Alter kann nicht negativ sein. Es wurde auf 0 gesetzt.");
+                    throw new InvalidAge("Alter kann nicht negativ sein");
                 }
-                else
-                {
-                    age = value;
-                }
-           }
+                age = value;
+            }
         }
-        
+        private int age;
+
         public void Introduce(string Name, int Age)
         {
             this.Name = Name;
@@ -38,6 +35,23 @@ namespace OOP_training
         public void Vorstellung(string Name, int Age)
         {
             Console.WriteLine($"Hallo, mein Name ist {Name} und ich bin {Age} Jahre alt.");
+        }
+
+        public class InvalidAge : Exception
+        {
+            public InvalidAge(string message)
+                : base(message)
+            {
+                
+            }
+
+            public InvalidAge(string message, Exception innerException)
+                :base(message, innerException) 
+            {
+            
+            }
+
+
         }
     }
 }

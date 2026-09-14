@@ -7,7 +7,6 @@ namespace OOP_training
     class Program
     {
         
-
         static void Main(string[] args)
         {
             Console.WriteLine("Welche Aufg. willst du Testen:");
@@ -84,6 +83,25 @@ namespace OOP_training
                 newP.Introduce(new_person_name, 30);
                 lagerPerson.AddElement(newP);
                 Console.WriteLine(lagerPerson.ToString());
+            }
+
+
+            if (x == 4)
+            { 
+                var person = new Person();
+
+                try
+                {
+                    person.Age = -30;       // Exception test
+                }
+                catch(Person.InvalidAge ex)
+                { 
+                    Console.Write("Fehler: " + ex.ToString() + Environment.NewLine);
+                    person.Age = 0;
+                }
+
+                Console.WriteLine($"Alter ist jetzt: {person.Age}");
+                
             }
         }
     }
