@@ -37,6 +37,12 @@ namespace OOP_training
             Console.WriteLine($"Hallo, mein Name ist {Name} und ich bin {Age} Jahre alt.");
         }
 
+        public class ExceptionLogEntry
+        { 
+            public string Message { get; set; }
+            public string Timestamp { get; set; }
+        }
+
         public class InvalidAge : Exception
         {
             public InvalidAge(string message)
@@ -50,7 +56,6 @@ namespace OOP_training
             {
             
             }
-
 
         }
     }

@@ -1,12 +1,14 @@
-﻿using System.Globalization;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
+using static OOP_training.Person;
 
 namespace OOP_training
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
             Console.WriteLine("Welche Aufg. willst du Testen:");
@@ -87,17 +89,40 @@ namespace OOP_training
 
 
             if (x == 4)
-            { 
+            {
+                string rightnow = DateTime.Now.ToString();
+
+                if (!(File.Exists("Exception_log.json")))
+                {
+                    File.WriteAllText("Exception_log.json", "[]");
+                }
+
+                string json = File.ReadAllText("Exception_log.json");
+
+                List<ExceptionLogEntry> logEntries = string.IsNullOrWhiteSpace(json)
+                    ? new List<ExceptionLogEntry>()                                 // Datei leer? -> neue leere Liste
+                    : JsonSerializer.Deserialize<List<ExceptionLogEntry>>(json)     // sonst: JSON einlesen
+                    ?? new List<ExceptionLogEntry>();                               // falls das "null" ergibt -> auch leere Liste
+
                 var person = new Person();
 
                 try
                 {
-                    person.Age = -30;       // Exception test
+                    person.Age = -30;                                                // Exception test
                 }
                 catch(Person.InvalidAge ex)
                 { 
                     Console.Write("Fehler: " + ex.ToString() + Environment.NewLine);
                     person.Age = 0;
+
+                    logEntries.Add(new ExceptionLogEntry
+                    {
+                        Timestamp = DateTime.Now.ToString(),
+                        Message = ex.ToString()
+                    });
+
+                    File.WriteAllText("Exception_log.json",
+                        JsonSerializer.Serialize(logEntries, new JsonSerializerOptions { WriteIndented = true}));
                 }
 
                 Console.WriteLine($"Alter ist jetzt: {person.Age}");
