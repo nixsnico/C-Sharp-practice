@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
@@ -110,8 +111,8 @@ namespace OOP_training
                 {
                     person.Age = -30;                                                // Exception test
                 }
-                catch(Person.InvalidAge ex)
-                { 
+                catch (Person.InvalidAge ex)
+                {
                     Console.Write("Fehler: " + ex.ToString() + Environment.NewLine);
                     person.Age = 0;
 
@@ -122,11 +123,21 @@ namespace OOP_training
                     });
 
                     File.WriteAllText("Exception_log.json",
-                        JsonSerializer.Serialize(logEntries, new JsonSerializerOptions { WriteIndented = true}));
+                        JsonSerializer.Serialize(logEntries, new JsonSerializerOptions { WriteIndented = true }));
                 }
 
                 Console.WriteLine($"Alter ist jetzt: {person.Age}");
-                
+            }
+
+            if (x == 5)
+            {
+                Zoo zoo = new Zoo();
+                var hund = new Hund("Chop");
+                var katze = new Katze("Void");
+                zoo.AddTiere(hund);
+                zoo.AddTiere(katze);
+
+                zoo.ManagmentZoo(zoo);
             }
         }
     }
