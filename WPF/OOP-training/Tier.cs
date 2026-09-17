@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_training
 {
-    abstract class Tier 
+    public abstract class Tier 
     {
 
         public Tier(string name)
@@ -27,7 +28,6 @@ namespace OOP_training
                 name = value;
             }
         }
-
         private string name;
         public abstract void MakeSound();
 
@@ -58,13 +58,18 @@ namespace OOP_training
         {
             Console.WriteLine("Wuff Wuff");
         }
+
+        public void Fressen(string nahrung)
+        {
+            nahrung = Console.ReadLine();
+            Console.WriteLine($"{Name} frisst {nahrung}.");
+        }
     } 
 
     class Katze : Tier, IFressbar 
     {
         public void Fressen(string nahrung)
         {
-
             nahrung = Console.ReadLine();
             Console.WriteLine($"{Name} frisst {nahrung}.");
         }
@@ -85,6 +90,11 @@ namespace OOP_training
         {
             Console.WriteLine($"{Name} fliegt.");
         }
+        public void Fressen(string nahrung)
+        {
+            nahrung = Console.ReadLine();
+            Console.WriteLine($"{Name} frisst {nahrung}.");
+        }
 
         public Vogel(string name) : base(name)
         {
@@ -93,6 +103,34 @@ namespace OOP_training
         public override void MakeSound()
         {
             Console.WriteLine("Zwitscher Zwitscher");
+        }
+       
+    }
+
+    public class Zoo
+    {
+        List<Tier> TiereListe = new List<Tier>();
+
+        public void AddTiere(Tier tiere)
+        {
+
+            TiereListe.Add(tiere);
+        }
+
+        public void RemoveTiere(Tier tiere)
+        {
+
+            TiereListe.Remove(tiere);
+        }
+
+        public void FeedAll()
+        {
+            foreach (Tier t in TiereListe)
+            {
+                t.MakeSound();
+
+
+            }
         }
     }
 }
