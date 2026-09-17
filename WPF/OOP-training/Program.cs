@@ -12,9 +12,25 @@ namespace OOP_training
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welche Aufg. willst du Testen:");
+            bool eingabeFalsch = true;
+            int x = 0;
+            do
+            {
+                Console.WriteLine("Welche Aufg. willst du Testen:");
+                
+                try
+                {
+                    x = Convert.ToInt32(Console.ReadLine());
+                    eingabeFalsch = false;
+                }
+                catch
+                {
+                    Console.WriteLine("falsche eingabe blsbla");
 
-            int x = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+            while (eingabeFalsch);
+           
 
             if (x == 1) 
             {

@@ -193,7 +193,6 @@ namespace OOP_training
             }
         }
 
-
         public List<Tier> TiereListe = new List<Tier>();
 
         public void AddTiere(Tier tiere)
@@ -216,5 +215,5 @@ namespace OOP_training
 
             }
         }
-    }
+    } 
 }
