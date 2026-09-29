@@ -108,8 +108,6 @@ namespace OOP_training
        
     }
 
-
-
     public class Zoo
     {
 
@@ -190,6 +188,8 @@ namespace OOP_training
                         }
                     }
                 break;
+
+
             }
         }
 
@@ -197,13 +197,11 @@ namespace OOP_training
 
         public void AddTiere(Tier tiere)
         {
-
             TiereListe.Add(tiere);
         }
 
         public void RemoveTiere(Tier tiere)
         {
-
             TiereListe.Remove(tiere);
         }
 
