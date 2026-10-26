@@ -189,5 +189,3 @@ class Program
         Console.WriteLine(compressed.ToString());
     }
 }
-
-
