@@ -13,32 +13,30 @@ namespace Sicherheitseingabe
         public DateTime? lastCardUse { get; set; }
         public required int MitarbeiterID { get; init; }
 
-    }
+    
 
-    public class SicherheitskartenDatenbank
-    {
-        private readonly Dictionary<int, SicherheitsKarte> _karten = new(); // Speicher: Karten-ID -> Karte
 
-        public SicherheitsKarte? GetCardByOwner(int mitarbeiterID)
+
+        public void SecurityAccess(Freigabe freigabe)
         {
-                                                            // Geht alle Karten durch und nimmt die erste, deren Besitzer passt. Sonst null.
-            return _karten.Values.FirstOrDefault(k => k.MitarbeiterID == mitarbeiterID);
-        }
+            switch (freigabe)
+            {
+                case Freigabe.grün:
+                    // logik für grünes Licht
 
-        public void AddCard(SicherheitsKarte karte)         // Karte hinzufügen
-        {
-            _karten[karte.KartenID] = karte;                // unter ihrer ID ablegen
-        }
+                    break;
 
-        public bool HasCard(int kartenID)                   // gibts die Karte?
-        {
-            return _karten.ContainsKey(kartenID);           // true=ja / false=no
-        }
+                case Freigabe.blau:
+                    // logik für blaues Licht
 
-        public SicherheitsKarte? GetCard(int kartenID)      // Karte holen (oder null)
-        {
-            _karten.TryGetValue(kartenID, out var karte);   // suchen
-            return karte;                                   // Karte oder null zurückgeben
+                    break;
+
+                case Freigabe.rot:
+                    // logik für rotes Licht
+
+                    break;
+            }
         }
     }
 }
+ 

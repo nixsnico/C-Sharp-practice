@@ -18,9 +18,7 @@ namespace Sicherheitseingabe
             _kartenDB = kartenDB;
             _mitarbeiterDB = mitarbeiterDB;
         }
-
-
-        // versuche des immer noch vollständing zu verstehen
+        
         public bool CanAccess(int mitarbeiterID)
         {
             var mitarbeiter = _mitarbeiterDB.GetMitarbeiter(mitarbeiterID);
