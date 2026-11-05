@@ -1,0 +1,23 @@
+{
+  "MitarbeiterListe": [
+    {
+      "MitarbeiterID": 0,
+      "Nachname": null,
+      "Vorname": null,
+      "StartofEmployment": "0001-01-01T00:00:00",
+      "Birth": "0001-01-01",
+      "OnHoliday": false,
+      "OnWorkTrip": false
+    },
+    {
+      "MitarbeiterID": 1,
+      "Nachname": "Person",
+      "Vorname": "Test",
+      "StartofEmployment": "2026-11-05T16:15:05.42955+01:00",
+      "Birth": "1990-05-12",
+      "OnHoliday": false,
+      "OnWorkTrip": false
+    }
+  ],
+  "KartenListe": []
+}

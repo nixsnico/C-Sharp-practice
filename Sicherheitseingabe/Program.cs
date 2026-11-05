@@ -1,37 +1,40 @@
 ﻿using Sicherheitseingabe;
 using System.Text.Json;
+using System.Collections.Generic;
+
 
 class Program
 {
     static void Main()
     {
-        Mitarbeiter abfragemitarbeiter = new();
-
-
-        Console.WriteLine("Welcher Mitarbeiter sind Sie?");
-        Console.ReadLine();
-
-
-
-        string pfad = "MitarbeiterInfo.json";
-        string jsonLaden = File.ReadAllText(pfad);
-
-        var geladenePersonen = JsonSerializer.Deserialize<Mitarbeiter>(jsonLaden);
-
-        Console.ReadLine();
-
-
-        var mdb = new Mitarbeiterdatenbank();
-        mdb.AddMitarbeiter(new Mitarbeiter { MitarbeiterID = 1,
-                                             Nachname = "Mustermann",
-                                             Vorname = "Max",
-                                             StartofEmployment = new DateTime(2020, 1, 1),
-                                             Birth = new DateOnly(1990, 5, 15),
-                                             OnHoliday = false,
-                                             OnWorkTrip = false });
-
+        var neu = new Mitarbeiter();
 
         
 
+         EmployeeData daten = EmployeeStore.Load();
+
+        if (!daten.MitarbeiterListe.Any(m => m.MitarbeiterID == neu.MitarbeiterID))
+        {
+            daten.MitarbeiterListe.Add(new Mitarbeiter { /* ... */ });
+            EmployeeStore.Save(daten);
+        }
+        
+        daten.MitarbeiterListe.Add(new Mitarbeiter
+        {
+            MitarbeiterID = 1,
+            Nachname = "Person",
+            Vorname = "Test",
+            StartofEmployment = DateTime.Now,
+            Birth = new DateOnly(1990, 5, 12)
+
+        });
+
+        Console.WriteLine("");
+        Console.WriteLine("Existiert der Mitarbeiter? [y/n]");
+        
+        
+        EmployeeStore.Save(daten);
+        // Console.WriteLine("Welcher Mitarbeiter sind Sie?");
+        // Console.ReadLine();
     }
 }

@@ -13,30 +13,27 @@ namespace Sicherheitseingabe
         public DateTime? lastCardUse { get; set; }
         public required int MitarbeiterID { get; init; }
 
-    
 
+        // public void SecurityAccess(Freigabe freigabe)
+        // {
+        //     switch (freigabe)
+        //     {
+        //         case Freigabe.grün:
+        //             // logik für grünes Licht
 
+        //             break;
 
-        public void SecurityAccess(Freigabe freigabe)
-        {
-            switch (freigabe)
-            {
-                case Freigabe.grün:
-                    // logik für grünes Licht
+        //         case Freigabe.blau:
+        //             // logik für blaues Licht
 
-                    break;
+        //             break;
 
-                case Freigabe.blau:
-                    // logik für blaues Licht
+        //         case Freigabe.rot:
+        //             // logik für rotes Licht
 
-                    break;
-
-                case Freigabe.rot:
-                    // logik für rotes Licht
-
-                    break;
-            }
-        }
+        //             break;
+        //     }
+        // }
     }
 }
  
