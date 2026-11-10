@@ -22,10 +22,11 @@ namespace Sicherheitseingabe
         public int MitarbeiterID { get; init; }
         public string Nachname { get; set; }
         public string Vorname { get; set; }
-        public DateTime StartofEmployment { get; set; }
+        public DateOnly StartofEmployment { get; set; }
         public DateOnly Birth { get; set; }
         public bool OnHoliday { get; set; }
         public bool OnWorkTrip { get; set; }
+        public Abteilung Abteilung {get; set;}
     }
 }
 

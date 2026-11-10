@@ -19,8 +19,6 @@ namespace Sicherheitseingabe
         Admins
     }
 
-    
-
     class FreigabeViaAbteilung
     {
         public Freigabe GetMaxFreigabe(Abteilung abteilung)

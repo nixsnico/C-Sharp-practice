@@ -7,34 +7,36 @@ class Program
 {
     static void Main()
     {
-        var neu = new Mitarbeiter();
+        var mdb = new Mitarbeiterdatenbank();
 
-        
+        int id; 
+        Console.Write("ID: ");
+        while (!int.TryParse(Console.ReadLine(), out id) || mdb.ExistiertID(id))
+            Console.Write("Ungültig oder bereits vergeben, bitte neu eingeben: ");
 
-         EmployeeData daten = EmployeeStore.Load();
+        Console.Write("Vorname: ");
+        string name = Console.ReadLine() ?? "";
 
-        if (!daten.MitarbeiterListe.Any(m => m.MitarbeiterID == neu.MitarbeiterID))
-        {
-            daten.MitarbeiterListe.Add(new Mitarbeiter { /* ... */ });
-            EmployeeStore.Save(daten);
-        }
-        
-        daten.MitarbeiterListe.Add(new Mitarbeiter
-        {
-            MitarbeiterID = 1,
-            Nachname = "Person",
-            Vorname = "Test",
-            StartofEmployment = DateTime.Now,
-            Birth = new DateOnly(1990, 5, 12)
+        Console.Write("Nachname: ");
+        string nachname = Console.ReadLine() ?? "";
 
-        });
+        DateOnly birth;
+        Console.Write("Birthday (TT.MM.JJJJ): ");
+        while (!DateOnly.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", out birth))
+            Console.WriteLine("Ungültig, bitte im Format TT.MM.JJJJ eingeben: ");
 
-        Console.WriteLine("");
-        Console.WriteLine("Existiert der Mitarbeiter? [y/n]");
-        
-        
-        EmployeeStore.Save(daten);
-        // Console.WriteLine("Welcher Mitarbeiter sind Sie?");
-        // Console.ReadLine();
+        DateOnly SoE;
+        Console.Write("Start of Employment (TT.MM.JJJJ): ");
+         while (!DateOnly.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", out SoE))
+            Console.WriteLine("Ungültig, bitte im Format TT.MM.JJJJ eingeben: ");
+
+        Abteilung abteilung = AbteilungAuswahl.Waehlen();
+
+        var neu = new Mitarbeiter
+        { MitarbeiterID = id, Vorname = name, Birth = birth, Nachname = nachname,
+          StartofEmployment = SoE, Abteilung = abteilung};
+
+        if (mdb.AddMitarbeiter(neu))
+            Console.WriteLine("Mitarbeiter gespeichert.");
     }
 }

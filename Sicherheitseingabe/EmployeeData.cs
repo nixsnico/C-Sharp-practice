@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Sicherheitseingabe;
 
 public class EmployeeData
@@ -12,8 +13,11 @@ public static class EmployeeStore
     private static readonly string FilePath = Path.GetFullPath(
         Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Employees.json"));
 
-    private static readonly JsonSerializerOptions options = new() { WriteIndented = true };
-
+    private static readonly JsonSerializerOptions options = new()
+    {
+        WriteIndented = true,
+        Converters = { new JsonStringEnumConverter() }
+    };
     public static void Save(EmployeeData daten)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);

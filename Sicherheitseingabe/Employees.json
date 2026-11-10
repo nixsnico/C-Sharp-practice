@@ -1,22 +1,24 @@
 {
   "MitarbeiterListe": [
     {
-      "MitarbeiterID": 0,
-      "Nachname": null,
-      "Vorname": null,
-      "StartofEmployment": "0001-01-01T00:00:00",
-      "Birth": "0001-01-01",
+      "MitarbeiterID": 1,
+      "Nachname": "Kart",
+      "Vorname": "Mario",
+      "StartofEmployment": "2001-09-11",
+      "Birth": "1981-10-11",
       "OnHoliday": false,
-      "OnWorkTrip": false
+      "OnWorkTrip": false,
+      "Abteilung": "IT"
     },
     {
-      "MitarbeiterID": 1,
-      "Nachname": "Person",
-      "Vorname": "Test",
-      "StartofEmployment": "2026-11-05T16:15:05.42955+01:00",
-      "Birth": "1990-05-12",
+      "MitarbeiterID": 2,
+      "Nachname": "T\u00F6rke",
+      "Vorname": "DJ",
+      "StartofEmployment": "1999-04-04",
+      "Birth": "1999-01-20",
       "OnHoliday": false,
-      "OnWorkTrip": false
+      "OnWorkTrip": false,
+      "Abteilung": "Personal"
     }
   ],
   "KartenListe": []
