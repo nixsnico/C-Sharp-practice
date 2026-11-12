@@ -4,8 +4,8 @@ using Sicherheitseingabe;
 
 public class EmployeeData
 {
-    public List<Mitarbeiter> MitarbeiterListe {get;set;} = new();
-    public List<SicherheitsKarte> KartenListe {get;set;} = new();
+    public List<Mitarbeiter> MitarbeiterListe {get; set;} = new();
+    public List<SicherheitsKarte> KartenListe {get; set;} = new();
 }
 
 public static class EmployeeStore
@@ -32,6 +32,6 @@ public static class EmployeeStore
             return new EmployeeData();
 
         string json = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<EmployeeData>(json) ?? new EmployeeData();
+        return JsonSerializer.Deserialize<EmployeeData>(json, options) ?? new EmployeeData();
     }
 }

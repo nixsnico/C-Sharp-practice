@@ -12,13 +12,23 @@
     },
     {
       "MitarbeiterID": 2,
-      "Nachname": "T\u00F6rke",
+      "Nachname": "Torke",
       "Vorname": "DJ",
       "StartofEmployment": "1999-04-04",
       "Birth": "1999-01-20",
       "OnHoliday": false,
       "OnWorkTrip": false,
       "Abteilung": "Personal"
+    },
+    {
+      "MitarbeiterID": 3,
+      "Nachname": "H",
+      "Vorname": "Maximalian",
+      "StartofEmployment": "1999-02-02",
+      "Birth": "1672-01-01",
+      "OnHoliday": false,
+      "OnWorkTrip": false,
+      "Abteilung": "Engineers"
     }
   ],
   "KartenListe": []

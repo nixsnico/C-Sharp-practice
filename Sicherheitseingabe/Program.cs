@@ -9,10 +9,8 @@ class Program
     {
         var mdb = new Mitarbeiterdatenbank();
 
-        int id; 
-        Console.Write("ID: ");
-        while (!int.TryParse(Console.ReadLine(), out id) || mdb.ExistiertID(id))
-            Console.Write("Ungültig oder bereits vergeben, bitte neu eingeben: ");
+        int id = mdb.NaechsteID();
+        Console.WriteLine($"Vergebene ID: {id}");
 
         Console.Write("Vorname: ");
         string name = Console.ReadLine() ?? "";

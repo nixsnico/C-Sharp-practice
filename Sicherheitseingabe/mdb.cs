@@ -1,5 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 using System;
+using System.Linq;
 
 
 namespace Sicherheitseingabe
@@ -37,6 +38,18 @@ namespace Sicherheitseingabe
             _mitarbeiter.TryGetValue(id, out var m);
             return m;
         }
+
+        public int NaechsteID()
+        {
+        //return _mitarbeiter.Count == 0 ? 1 : _mitarbeiter.Keys.Max() + 1;
+        
+            if (_mitarbeiter.Count == 0)
+            return 1;
+        else
+            return _mitarbeiter.Keys.Max() + 1;
+            
+        }
+
     }
 }
 
