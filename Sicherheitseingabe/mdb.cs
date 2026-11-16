@@ -9,6 +9,7 @@ namespace Sicherheitseingabe
     {
         private readonly EmployeeData _daten;
         private readonly Dictionary<int, Mitarbeiter> _mitarbeiter = new();
+        public Dictionary<int, Mitarbeiter> namelist { get; }= new();
 
         public Mitarbeiterdatenbank()
         {
@@ -47,9 +48,20 @@ namespace Sicherheitseingabe
             return 1;
         else
             return _mitarbeiter.Keys.Max() + 1;
-            
+
         }
 
+        public void ListMitarbeiter()
+        {
+            foreach (int id in _mitarbeiter.Keys)
+            {
+                Mitarbeiter m = _mitarbeiter[id];
+                Console.WriteLine($"{id}: {m.Vorname} {m.Nachname}");
+            }
+        }
+
+      
+        
     }
 }
 

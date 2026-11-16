@@ -1,6 +1,9 @@
 ﻿using Sicherheitseingabe;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.ComponentModel.Design.Serialization;
+using System.Security.Authentication.ExtendedProtection;
 
 
 class Program
@@ -8,33 +11,67 @@ class Program
     static void Main()
     {
         var mdb = new Mitarbeiterdatenbank();
+        var m = new Mitarbeiter();
+        A:
 
-        int id = mdb.NaechsteID();
-        Console.WriteLine($"Vergebene ID: {id}");
 
-        Console.Write("Vorname: ");
-        string name = Console.ReadLine() ?? "";
+        Console.Write($"Alle Mitarbeiter {Environment.NewLine}");
+        mdb.ListMitarbeiter();
+        Console.Write($"Existiert der Mitarbeiter?: [y/n] {Environment.NewLine}");
+        string x = Console.ReadLine() ?? "";
 
-        Console.Write("Nachname: ");
-        string nachname = Console.ReadLine() ?? "";
 
-        DateOnly birth;
-        Console.Write("Birthday (TT.MM.JJJJ): ");
-        while (!DateOnly.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", out birth))
-            Console.WriteLine("Ungültig, bitte im Format TT.MM.JJJJ eingeben: ");
 
-        DateOnly SoE;
-        Console.Write("Start of Employment (TT.MM.JJJJ): ");
-         while (!DateOnly.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", out SoE))
-            Console.WriteLine("Ungültig, bitte im Format TT.MM.JJJJ eingeben: ");
+        if (x == "n")
+        {
+            m.CreateMitarbeiter();
+        }
 
-        Abteilung abteilung = AbteilungAuswahl.Waehlen();
+        else if (x == "y")
+        {
 
-        var neu = new Mitarbeiter
-        { MitarbeiterID = id, Vorname = name, Birth = birth, Nachname = nachname,
-          StartofEmployment = SoE, Abteilung = abteilung};
+            mdb.ListMitarbeiter();
+            int whosID;
 
-        if (mdb.AddMitarbeiter(neu))
-            Console.WriteLine("Mitarbeiter gespeichert.");
+            while (true)
+            {
+                Console.Write($"Welchen Mitarbeiter:{Environment.NewLine}");
+
+                if (!int.TryParse(Console.ReadLine(), out whosID))
+                {
+                   Console.WriteLine("Input ist keine ID.");
+                }
+                else if (!mdb.ExistiertID(whosID))
+                {
+                    Console.WriteLine("MitarbeiterID gibts nicht.");
+                }
+                else
+                {
+                    break;
+                }    
+                
+            }
+            //mGet ist der ausgewählte Mitarbeiter
+            var mGet = mdb.GetMitarbeiter(whosID)!;
+            var abtl = new FreigabeViaAbteilung();
+
+            //was tun wenn die person schon existiert
+            Console.WriteLine($"Ausgewählt: {mGet.Vorname} {mGet.Nachname}");
+            Console.WriteLine("Wo wollen Sie hin?");
+
+            //CanAceess() nutzen um zu sehen ob er die rechte hat 
+            // basierend darauf welche abteilung er ist = freigabe stufe
+            Abteilung gewaelt = AbteilungAuswahl.Waehlen();
+            abtl.CheckAccess(mGet.Abteilung, abtl.GetMaxFreigabe(gewaelt));
+
+        }
+
+        else
+        {
+            goto A;
+        }
+
+            
+
     }
 }

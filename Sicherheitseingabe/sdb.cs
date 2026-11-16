@@ -26,5 +26,7 @@ namespace Sicherheitseingabe
             _karten.TryGetValue(kartenID, out var karte);   // suchen
             return karte;                                   // Karte oder null zurückgeben
         }
+
+        
     }
 }
