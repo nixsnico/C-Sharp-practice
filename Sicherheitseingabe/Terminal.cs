@@ -32,15 +32,5 @@ namespace Sicherheitseingabe
             return karte.Freigabe >= Accesslvl;
 
         }
-
-        public void AccessAccepted()
-        {
-            Console.WriteLine("Access Accepted");
-        }
-
-        public void AccessDenied()
-        {
-            Console.WriteLine("Access Denied");
-        }
     }
 }

@@ -8,7 +8,8 @@
       "Birth": "1981-10-11",
       "OnHoliday": false,
       "OnWorkTrip": false,
-      "Abteilung": "IT"
+      "Abteilung": "IT",
+      "Karte": null
     },
     {
       "MitarbeiterID": 2,
@@ -18,7 +19,8 @@
       "Birth": "1999-01-20",
       "OnHoliday": false,
       "OnWorkTrip": false,
-      "Abteilung": "Personal"
+      "Abteilung": "Personal",
+      "Karte": null
     },
     {
       "MitarbeiterID": 3,
@@ -28,7 +30,19 @@
       "Birth": "1672-01-01",
       "OnHoliday": false,
       "OnWorkTrip": false,
-      "Abteilung": "Engineers"
+      "Abteilung": "Engineers",
+      "Karte": null
+    },
+    {
+      "MitarbeiterID": 4,
+      "Nachname": "Keller",
+      "Vorname": "Helen",
+      "StartofEmployment": "1881-04-30",
+      "Birth": "1880-04-27",
+      "OnHoliday": false,
+      "OnWorkTrip": false,
+      "Abteilung": "Admins",
+      "Karte": null
     }
   ],
   "KartenListe": []
