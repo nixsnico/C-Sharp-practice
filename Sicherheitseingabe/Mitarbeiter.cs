@@ -33,11 +33,10 @@ namespace Sicherheitseingabe
         public SicherheitsKarte? Karte { get; set; }
 
 
-        public void CreateMitarbeiter()
+        public void CreateMitarbeiter(SicherheitskartenDatenbank kartenDB)
         {
             var mdb = new Mitarbeiterdatenbank();
             string x = Console.ReadLine() ?? "";
-
 
             Console.Write("Neuer Mitarbeiter wird Erstellt.");
 
@@ -67,8 +66,23 @@ namespace Sicherheitseingabe
             StartofEmployment = SoE, Abteilung = abteilung};
 
             if (mdb.AddMitarbeiter(neu))
+            {
                 Console.WriteLine("Mitarbeiter gespeichert.");
+
+                mdb.SetKarte(id, new SicherheitsKarte
+                {
+                    KartenID = id,
+                    MitarbeiterID = id,
+                    Freigabe = new FreigabeViaAbteilung().GetMaxFreigabe(abteilung)
+                });
+            }
+
+            kartenDB.AddCard(new SicherheitsKarte
+            {
+                KartenID = id,
+                MitarbeiterID = id,
+                Freigabe = new FreigabeViaAbteilung().GetMaxFreigabe(abteilung)
+            });
         }
     }
 }
-

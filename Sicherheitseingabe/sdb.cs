@@ -8,7 +8,8 @@ namespace Sicherheitseingabe
         public SicherheitsKarte? GetCardByOwner(int mitarbeiterID)
         {
                                                             // Geht alle Karten durch und nimmt die erste, deren Besitzer passt. Sonst null.
-            return _karten.Values.FirstOrDefault(k => k.MitarbeiterID == mitarbeiterID);
+            _karten.TryGetValue(mitarbeiterID, out var karte);
+            return karte;
         }
 
         public void AddCard(SicherheitsKarte karte)         // Karte hinzufügen

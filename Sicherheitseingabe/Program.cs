@@ -12,6 +12,8 @@ class Program
     {
         var mdb = new Mitarbeiterdatenbank();
         var m = new Mitarbeiter();
+        var kartenDB = new SicherheitskartenDatenbank();
+        var terminal = new Terminal(kartenDB, mdb);
         A:
 
 
@@ -24,7 +26,7 @@ class Program
 
         if (x == "n")
         {
-            m.CreateMitarbeiter();
+            m.CreateMitarbeiter(kartenDB);
         }
 
         else if (x == "y")
@@ -55,14 +57,34 @@ class Program
             var mGet = mdb.GetMitarbeiter(whosID)!;
             var abtl = new FreigabeViaAbteilung();
 
-            //was tun wenn die person schon existiert
+            if (mGet.Karte == null)
+            {
+                mdb.SetKarte(whosID, new SicherheitsKarte
+                {
+                    KartenID = whosID,
+                    MitarbeiterID = whosID,
+                    Freigabe = abtl.GetMaxFreigabe(mGet.Abteilung)
+                });
+            }
+
+            //was tun wenn die person schon existiert4
             Console.WriteLine($"Ausgewählt: {mGet.Vorname} {mGet.Nachname}");
             Console.WriteLine("Wo wollen Sie hin?");
 
-            //CanAceess() nutzen um zu sehen ob er die rechte hat 
+            //CanAceess() nutzen um zu sehen ob er die rechte hat
+
             // basierend darauf welche abteilung er ist = freigabe stufe
             Abteilung gewaelt = AbteilungAuswahl.Waehlen();
             abtl.CheckAccess(mGet.Abteilung, abtl.GetMaxFreigabe(gewaelt));
+            //TryAccess() um des zu probieren und zu loggen
+            if (terminal.TryAccess(whosID, abtl.GetMaxFreigabe(gewaelt)))
+            {
+                Console.WriteLine("Eintritt erlaubt.");
+            }
+            else
+            {
+                Console.WriteLine("Eintritt verweigert.");
+            }
 
         }
 

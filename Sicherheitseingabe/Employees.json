@@ -2,47 +2,19 @@
   "MitarbeiterListe": [
     {
       "MitarbeiterID": 1,
-      "Nachname": "Kart",
-      "Vorname": "Mario",
-      "StartofEmployment": "2001-09-11",
-      "Birth": "1981-10-11",
-      "OnHoliday": false,
-      "OnWorkTrip": false,
-      "Abteilung": "IT",
-      "Karte": null
-    },
-    {
-      "MitarbeiterID": 2,
-      "Nachname": "Torke",
-      "Vorname": "DJ",
-      "StartofEmployment": "1999-04-04",
-      "Birth": "1999-01-20",
-      "OnHoliday": false,
-      "OnWorkTrip": false,
-      "Abteilung": "Personal",
-      "Karte": null
-    },
-    {
-      "MitarbeiterID": 3,
-      "Nachname": "Hoppe",
-      "Vorname": "Maximalian",
-      "StartofEmployment": "1999-02-02",
-      "Birth": "1672-01-01",
-      "OnHoliday": false,
-      "OnWorkTrip": false,
-      "Abteilung": "Engineers",
-      "Karte": null
-    },
-    {
-      "MitarbeiterID": 4,
-      "Nachname": "Keller",
-      "Vorname": "Helen",
-      "StartofEmployment": "1881-04-30",
-      "Birth": "1880-04-27",
+      "Nachname": "Fudge",
+      "Vorname": "Big",
+      "StartofEmployment": "1870-02-03",
+      "Birth": "1967-09-09",
       "OnHoliday": false,
       "OnWorkTrip": false,
       "Abteilung": "Admins",
-      "Karte": null
+      "Karte": {
+        "KartenID": 1,
+        "Freigabe": "rot",
+        "lastCardUse": null,
+        "MitarbeiterID": 1
+      }
     }
   ],
   "KartenListe": []

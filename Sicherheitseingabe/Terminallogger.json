@@ -1,0 +1,38 @@
+[
+  {
+    "Zeit": "2026-11-17T10:13:39.4995439+01:00",
+    "MitarbeiterID": 4,
+    "Terminal": "",
+    "Erlaubt": false
+  },
+  {
+    "Zeit": "2026-11-17T10:14:55.8425444+01:00",
+    "MitarbeiterID": 4,
+    "Terminal": "",
+    "Erlaubt": false
+  },
+  {
+    "Zeit": "2026-11-17T10:32:45.7290308+01:00",
+    "MitarbeiterID": 4,
+    "Terminal": "",
+    "Erlaubt": false
+  },
+  {
+    "Zeit": "2026-11-17T10:43:16.7240936+01:00",
+    "MitarbeiterID": 4,
+    "Terminal": "",
+    "Erlaubt": false
+  },
+  {
+    "Zeit": "2026-11-17T10:45:25.7804976+01:00",
+    "MitarbeiterID": 1,
+    "Terminal": "",
+    "Erlaubt": false
+  },
+  {
+    "Zeit": "2026-11-17T10:51:28.7014729+01:00",
+    "MitarbeiterID": 1,
+    "Terminal": "",
+    "Erlaubt": true
+  }
+]

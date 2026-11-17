@@ -60,8 +60,14 @@ namespace Sicherheitseingabe
             }
         }
 
-      
-        
+        public void SetKarte(int mitarbeiterID, SicherheitsKarte karte)
+        {
+            var m = GetMitarbeiter(mitarbeiterID);
+            if (m == null) return;
+
+            m.Karte = karte;
+            EmployeeStore.Save(_daten);
+        }
     }
 }
 
